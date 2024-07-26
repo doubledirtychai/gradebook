@@ -1,24 +1,34 @@
-const character = "!";
-const count = 10;
-const rows = [];
-let inverted = false;
+function getAverage(scores) {
+  let sum = 0;
 
-function padRow(rowNumber, rowCount) {
-  return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+  for (const score of scores) {
+    sum += score;
+  }
+
+  return sum / scores.length;
 }
 
-for (let i = 1; i <= count; i++) {
-  if (inverted) {
-    rows.unshift(padRow(i, count));
+function getGrade(score) {
+  if (score === 100) {
+    return "A++";
+  } else if (score >= 90) {
+    return "A";
+  } else if (score >= 80) {
+    return "B";
+  } else if (score >= 70) {
+    return "C";
+  } else if (score >= 60) {
+    return "D";
   } else {
-    rows.push(padRow(i, count));
+    return "F";
   }
 }
 
-let result = ""
-
-for (const row of rows) {
-  result = result + "\n" + row;
+function hasPassingGrade(score) {
+  return getGrade(score) !== "F";
 }
 
-console.log(result);
+function studentMsg(totalScores, studentScore) {
+
+}
+console.log(studentMsg([92, 88, 12, 77, 57, 100, 67, 38, 97, 89], 37));
